@@ -1,8 +1,23 @@
 {% extends 'base.html.twig' %}
 
+
+    {% block stylesheets %}
+        <link href="asset/css/loginStyle.css"  rel="stylesheet" />
+        {#<link href="bootstrap/dist/css/bootstrap.min.css"  rel="stylesheet" />#}
+
+    {% endblock %}
+
+
+
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
+<body>
+<header>
+        <img id="logo" src="asset/images/logo.png">
+        <h3 class="titulo">Umbrella Corps.</h3>
+</header>
+
 <form method="post">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -14,12 +29,14 @@
         </div>
     {% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputUsername">Username</label>
-    <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" required>
+    <h1 class="h3 mb-3 font-weight-normal">Inicie sesion para continuar</h1>
+    <label for="inputUsername">Usuario: </label>
+    <input class="campo" type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" required autofocus>
+    <br><br>
+    <label for="inputPassword">Contraseña: </label>
+    <input class="campo" type="password" name="password" id="inputPassword" class="form-control" required>
 
+    <br><br>
     <input type="hidden" name="_csrf_token"
            value="{{ csrf_token('authenticate') }}"
     >
@@ -35,8 +52,9 @@
         </div>
     #}
 
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
+    <button class="boton" type="submit">
+        Iniciar sesion
     </button>
 </form>
+</body>
 {% endblock %}
