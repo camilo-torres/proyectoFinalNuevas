@@ -36,12 +36,12 @@ class RegisterController extends AbstractController
 
             // ... do any other work - like sending them an email, etc
             // maybe set a "flash" success message for the user
-
-            return $this->redirectToRoute('home');
+            
+            return $this->redirectToRoute('register');
         }
 
         return $this->render(
-            'register/index.html.twig',
+            'register/index.html.twig', 
             array('form' => $form->createView())
         );
     }
