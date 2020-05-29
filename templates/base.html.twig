@@ -2,11 +2,36 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <title>{% block title %}Dashboard{% endblock %}</title>
+
+        {% block head %}
+            <head>
+
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+            <meta name="description" content="">
+            <meta name="author" content="">
+            
+            </head>
+        {% endblock %}
+
+
+        {% block stylesheets %}
+            <link href="asset/css/loginStyle.css"  rel="stylesheet" />
+            <link href='{{ asset("startbootstrap-small-business-gh-pages/vendor/bootstrap/css/bootstrap.min.css") }}' rel="stylesheet">
+            <link href='{{ asset("startbootstrap-small-business-gh-pages/css/small-business.css") }}' rel="stylesheet">
+        {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block body %}
+        <header>
+            <img id="logo" src="asset/images/logo.png">
+            <h3 class="titulo">Daniel Leonardo Arcila Ibague - Ivan Camilo Torres Martin</h3>
+        </header>
+        {% endblock %}
+        {% block javascripts %}
+            <script src='{{ asset("startbootstrap-small-business-gh-pages/vendor/jquery/jquery.min.js") }}'></script>
+            <script src='{{ asset("startbootstrap-small-business-gh-pages/vendor/bootstrap/js/bootstrap.bundle.min.js") }}'></script>
+        {% endblock %}
     </body>
 </html>
