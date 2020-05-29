@@ -2,20 +2,39 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use Doctrine\DBAL\Schema\Schema;
-use Doctrine\Migrations\AbstractMigration;
+use Symfony\Bundle\FrameworkBundle\Console\Application;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\Console\Output\BufferedOutput;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\KernelInterface;
 
 class InitDatabaseController extends AbstractController
 {
     /**
      * @Route("/init-database", name="init_database")
      */
-    public function index()
+    public function sendSpool($messages = 10, KernelInterface $kernel)
     {
-        $this->addSql('CREATE TABLE empleados (id INT AUTO_INCREMENT NOT NULL, id_empleado INT NOT NULL, nombre VARCHAR(30) NOT NULL, apellido VARCHAR(30) NOT NULL, fecha_nacimiento DATETIME NOT NULL, rol VARCHAR(30) NOT NULL, usuario VARCHAR(30) NOT NULL, clave VARCHAR(30) NOT NULL, id_jefe INT DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $application = new Application($kernel);
+        $application->setAutoExit(false);
+
+        $input = new ArrayInput([
+            'command' => 'doctrine:schema:update',
+            '--force' =>  true,// (optional) define the value of command arguments
+        ]);
+
+        // You can use NullOutput() if you don't need the output
+        $output = new BufferedOutput();
+        $application->run($input, $output);
+
+        // return the output, don't use if you used NullOutput()
+        $content = $output->fetch();
+
+        // return new Response(""), if you used NullOutput()
+        return new Response($content);
+        
 
         return $this->render('init_database/index.html.twig', [
             'controller_name' => 'InitDatabaseController',
