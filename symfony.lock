@@ -75,9 +75,6 @@
     "doctrine/reflection": {
         "version": "1.2.1"
     },
-    "doctrine/sql-formatter": {
-        "version": "1.0.1"
-    },
     "egulias/email-validator": {
         "version": "2.1.17"
     },
@@ -106,7 +103,7 @@
         "version": "2.8.0"
     },
     "php": {
-        "version": "7.2"
+        "version": "7.4"
     },
     "phpdocumentor/reflection-common": {
         "version": "2.1.0"
@@ -534,11 +531,5 @@
     },
     "webmozart/assert": {
         "version": "1.8.0"
-    },
-    "zendframework/zend-code": {
-        "version": "3.4.1"
-    },
-    "zendframework/zend-eventmanager": {
-        "version": "3.2.1"
     }
 }
