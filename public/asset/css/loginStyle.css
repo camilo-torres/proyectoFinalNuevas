@@ -10,7 +10,17 @@
     color: white;
     text-align: center;
     vertical-align: middle;
-    font-size: 250%;
+    font-size: 140%;
+    font-family: Courier New;
+}
+
+.tituloGrande {
+    height: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 270%;
     font-family: Courier New;
 }
 
