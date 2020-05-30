@@ -32,6 +32,12 @@ class Orden
      */
     private $estado;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Empleado::class, inversedBy="ordenes")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $idEmpleado;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -72,4 +78,5 @@ class Orden
 
         return $this;
     }
+
 }
