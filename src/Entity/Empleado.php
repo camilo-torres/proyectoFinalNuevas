@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\EmpleadoRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -51,6 +53,16 @@ class Empleado
      * @ORM\Column(type="integer")
      */
     private $idJefe;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Orden::class, mappedBy="idEmpleado")
+     */
+    private $ordenes;
+
+    public function __construct()
+    {
+        $this->ordenes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -140,4 +152,36 @@ class Empleado
 
         return $this;
     }
+
+    /**
+     * @return Collection|Orden[]
+     */
+    public function getOrdenes(): Collection
+    {
+        return $this->ordenes;
+    }
+
+    public function addOrdene(Orden $ordene): self
+    {
+        if (!$this->ordenes->contains($ordene)) {
+            $this->ordenes[] = $ordene;
+            $ordene->setIdEmpleado($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOrdene(Orden $ordene): self
+    {
+        if ($this->ordenes->contains($ordene)) {
+            $this->ordenes->removeElement($ordene);
+            // set the owning side to null (unless already changed)
+            if ($ordene->getIdEmpleado() === $this) {
+                $ordene->setIdEmpleado(null);
+            }
+        }
+
+        return $this;
+    }
+
 }
