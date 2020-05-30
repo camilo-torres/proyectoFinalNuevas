@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nuevo Periodo{% endblock %}
+
+{% block body %}
+    <h1>Ingrese los datos del nuevo periodo</h1>
+
+    {{ include('periodo/_form.html.twig') }}
+
+    <a href="{{ path('home') }}">Volver a la pagina principal</a>
+{% endblock %}
