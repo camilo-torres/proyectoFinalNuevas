@@ -17,24 +17,94 @@
         
         {% block header %}
         <header>
-            <img id="logo" src="asset/images/logo.png">
-            <h3 class="titulo">Daniel Leonardo Arcila Ibague - Ivan Camilo Torres Martin</h3>
+            <img id="logo" src='{{ asset("asset/images/logo.png") }}'>
+            <h3 class="tituloGrande">Daniel Leonardo Arcila Ibague - Ivan Camilo Torres Martin</h3>
         </header>
         {% endblock %}
 
         {% block stylesheets %}
-            <link href="asset/css/loginStyle.css"  rel="stylesheet" />
+            <link href='{{ asset("asset/css/loginStyle.css") }}'  rel="stylesheet" />
             <link href='{{ asset("startbootstrap-small-business-gh-pages/vendor/bootstrap/css/bootstrap.min.css") }}' rel="stylesheet">
             <link href='{{ asset("startbootstrap-small-business-gh-pages/css/small-business.css") }}' rel="stylesheet">
         {% endblock %}
     </head>
     <body>
-        {% block body %}
-        
-        {% endblock %}
+
+        <!-- Navigation -->
+     {% block nav %}
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/home">Home</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Empleados
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/empleado/new">Crear</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/empleado">Consultar</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Productos
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/producto/new">Crear</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/producto">Consultar</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Periodos
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/periodo/new">Crear</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/periodo">Consultar</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Ordenes
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/orden">Consultar</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Puntos
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Procesar</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ path('app_logout') }}" style="color: white;">Cerrar sesion</a>
+      </li>
+    </div>
+  </nav>
+  {% endblock %}
+
+        {% block body %}{% endblock %}
+
         {% block javascripts %}
             <script src='{{ asset("startbootstrap-small-business-gh-pages/vendor/jquery/jquery.min.js") }}'></script>
             <script src='{{ asset("startbootstrap-small-business-gh-pages/vendor/bootstrap/js/bootstrap.bundle.min.js") }}'></script>
         {% endblock %}
+
+        {% block footer %}
+            <footer class="py-5 bg-dark">
+                <div class="container">
+                <p class="m-0 text-center text-white">Copyright &copy;Daniel y Camilo 2020</p>
+                </div>
+            </footer>
+        {% endblock %}
+
     </body>
 </html>
