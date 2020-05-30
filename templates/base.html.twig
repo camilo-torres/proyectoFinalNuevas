@@ -14,7 +14,13 @@
             
             </head>
         {% endblock %}
-
+        
+        {% block header %}
+        <header>
+            <img id="logo" src="asset/images/logo.png">
+            <h3 class="titulo">Daniel Leonardo Arcila Ibague - Ivan Camilo Torres Martin</h3>
+        </header>
+        {% endblock %}
 
         {% block stylesheets %}
             <link href="asset/css/loginStyle.css"  rel="stylesheet" />
@@ -24,10 +30,7 @@
     </head>
     <body>
         {% block body %}
-        <header>
-            <img id="logo" src="asset/images/logo.png">
-            <h3 class="titulo">Daniel Leonardo Arcila Ibague - Ivan Camilo Torres Martin</h3>
-        </header>
+        
         {% endblock %}
         {% block javascripts %}
             <script src='{{ asset("startbootstrap-small-business-gh-pages/vendor/jquery/jquery.min.js") }}'></script>

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nueva Orden{% endblock %}
+
+{% block body %}
+    <h1>Ingrese los datos de la orden</h1>
+
+    {{ include('orden/_form.html.twig') }}
+
+    <a href="{{ path('home') }}">Volver a la pagina principal</a>
+{% endblock %}
